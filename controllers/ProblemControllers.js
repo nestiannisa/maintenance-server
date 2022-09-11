@@ -1,11 +1,13 @@
-const { problem, section } = require("../models");
+const { problem, section, subBagian } = require("../models");
 
 class ProblemController {
   static async show(req,res){
     try {
-      let result = await problem.findAll({
-        include:[section]
-      })
+      let result = await problem.findAll(
+        {
+          include:[subBagian]
+        }
+      )
       
       res.status(200).json(result);
     } catch (error) {
@@ -16,10 +18,10 @@ class ProblemController {
   static async add(req, res) {
     try {
       const {
-        sectionId, bagianId, Value
+         subBagianId, Value
     } = req.body;
     let result = await problem.create({
-          sectionId, bagianId, Value
+           subBagianId, Value
       });
 
       res.status(201).json(result);

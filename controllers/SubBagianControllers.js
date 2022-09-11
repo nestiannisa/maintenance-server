@@ -1,9 +1,11 @@
-const { penyebab } = require("../models");
+const { subBagian,bagian } = require("../models");
 
-class PenyebabController {
+class SubBagianController {
   static async show(req,res){
     try {
-      let result = await penyebab.findAll()
+      let result = await subBagian.findAll({
+        include:[bagian]
+      })
       
       res.status(200).json(result);
     } catch (error) {
@@ -13,11 +15,14 @@ class PenyebabController {
   
   static async add(req, res) {
     try {
+      let Image = req.file.path;
+
       const {
-        subBagianId, Value_Penyebab
+        bagianId, Value
     } = req.body;
-    let result = await penyebab.create({
-          subBagianId, Value_Penyebab
+    
+    let result = await subBagian.create({
+          bagianId, Value, Image
       });
 
       res.status(201).json(result);
@@ -29,10 +34,10 @@ class PenyebabController {
   static async update(req, res) {
     try {
       const id = +req.params.id;
-      const { subBagianId, Value_Penyebab } = req.body;
-      let result = await penyebab.update(
+      const { bagianId, Value } = req.body;
+      let result = await subBagian.update(
         {
-          subBagianId, Value_Penyebab
+          bagianId, Value
         },
         {
           where: { id },
@@ -51,4 +56,4 @@ class PenyebabController {
   }
   
 }
-module.exports = PenyebabController;
+module.exports = SubBagianController;

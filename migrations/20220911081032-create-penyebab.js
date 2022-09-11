@@ -1,0 +1,30 @@
+'use strict';
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('penyebabs', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      subBagianId: {
+        type: Sequelize.INTEGER
+      },
+      Value: {
+        type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('penyebabs');
+  }
+};

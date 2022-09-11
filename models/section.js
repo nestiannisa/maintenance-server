@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       section.hasMany(models.bagian)
       section.hasMany(models.jenis_perbaikan)
-      section.hasMany(models.problem)
-      section.hasMany(models.penyebab)
+      // section.hasMany(models.problem)
+      // section.hasMany(models.penyebab)
 
     }
   }

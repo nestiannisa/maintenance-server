@@ -11,13 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      problem.belongsTo(models.section)
-      problem.belongsTo(models.bagian)
+      problem.belongsTo(models.subBagian)
+
     }
   }
   problem.init({
-    sectionId: DataTypes.INTEGER,
-    bagianId: DataTypes.INTEGER,
+    subBagianId: DataTypes.INTEGER,
     Value: DataTypes.STRING
   }, {
     sequelize,

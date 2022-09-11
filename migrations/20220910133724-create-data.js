@@ -50,6 +50,9 @@ module.exports = {
       Durasi: {
         type: Sequelize.INTEGER
       },
+      subBagian: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

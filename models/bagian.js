@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       bagian.belongsTo(models.section)
-      bagian.hasMany(models.problem)
+      // bagian.hasMany(models.problem)
+      bagian.hasMany(models.subBagian)
     }
   }
   bagian.init({
